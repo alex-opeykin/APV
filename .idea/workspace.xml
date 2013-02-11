@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6fa1e3b-0891-473b-94cb-163af2788bb8" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\User10100101\Documents\Политех\5-й семестр\Компьютерная Графика\APV\10100101" afterPath="" />
+    <list default="true" id="f6fa1e3b-0891-473b-94cb-163af2788bb8" name="Default" comment="qwer">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/10100101.bmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/10100101" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator165 - 2 035.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator165 - 2 05.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator165 - 2 1.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator165 - 3 02.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator165 - 3 035.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accumulator165 - 3 05.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/5.bmp" afterPath="$PROJECT_DIR$/5.bmp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core.py" afterPath="$PROJECT_DIR$/core.py" />
     </list>
@@ -45,16 +54,18 @@
       <file leaf-file-name="core.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="452" column="37" selection-start="16573" selection-end="16573" vertical-scroll-proportion="1.9983137">
+            <state line="443" column="30" selection-start="15219" selection-end="15219" vertical-scroll-proportion="-0.043252595">
               <folding>
-                <element signature="e#11360#11712#0" expanded="true" />
-                <element signature="e#11748#11995#0" expanded="true" />
-                <element signature="e#12045#13080#0" expanded="true" />
-                <element signature="e#12045#12351#1" expanded="false" />
-                <marker date="1360596450988" expanded="true" signature="14070:14653" placeholder="..." />
-                <marker date="1360596450988" expanded="true" signature="14073:14653" placeholder="..." />
-                <element signature="e#17408#17452#0" expanded="true" />
-                <element signature="e#17488#17524#0" expanded="true" />
+                <element signature="e#15#27#0" expanded="true" />
+                <element signature="e#3800#4642#0" expanded="true" />
+                <element signature="e#5600#9653#0" expanded="true" />
+                <element signature="e#9682#11345#0" expanded="true" />
+                <element signature="e#11397#11749#0" expanded="true" />
+                <element signature="e#11785#12032#0" expanded="true" />
+                <element signature="e#12082#13117#0" expanded="true" />
+                <element signature="e#12082#12388#1" expanded="false" />
+                <element signature="e#18028#18072#0" expanded="true" />
+                <element signature="e#18108#18144#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,7 +205,7 @@
     <property name="options.lastSelected" value="project.propVCSSupport.VCSs.Git" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/cmd/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Методы Оптимизации/LAB3/вариант 2/OptimalGradient" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="312" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="986" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="979" />
@@ -382,6 +393,11 @@
       <created>1357401968599</created>
       <updated>1357401968599</updated>
     </task>
+    <task id="LOCAL-00001" summary="qwer">
+      <created>1360596700171</created>
+      <updated>1360596700171</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -405,19 +421,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32899022" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31919643" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.075520836" sideWeight="0.22366993" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13333334" sideWeight="0.6710098" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13333334" sideWeight="0.6547231" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34527686" sideWeight="0.5005208" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34527686" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34527686" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -463,7 +479,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="[eq" />
+    <option name="LAST_COMMIT_MESSAGE" value="qwer" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -477,10 +493,11 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="[eq" />
+    <MESSAGE value="qwer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -495,14 +512,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="170" column="0" selection-start="5547" selection-end="5547" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#11360#11712#0" expanded="true" />
-            <element signature="e#11748#11995#0" expanded="true" />
-            <element signature="e#12045#13080#0" expanded="true" />
-            <element signature="e#12045#12351#1" expanded="false" />
-            <marker date="1360596450988" expanded="true" signature="14070:14653" placeholder="..." />
-            <marker date="1360596450988" expanded="true" signature="14073:14653" placeholder="..." />
-            <element signature="e#17408#17452#0" expanded="true" />
-            <element signature="e#17488#17524#0" expanded="true" />
+            <element signature="e#15#27#0" expanded="true" />
+            <element signature="e#3800#4642#0" expanded="true" />
+            <element signature="e#5600#9653#0" expanded="true" />
+            <element signature="e#9682#11345#0" expanded="true" />
+            <element signature="e#11397#11749#0" expanded="true" />
+            <element signature="e#11785#12032#0" expanded="true" />
+            <element signature="e#12082#13117#0" expanded="true" />
+            <element signature="e#12082#12388#1" expanded="false" />
+            <element signature="e#18028#18072#0" expanded="true" />
+            <element signature="e#18108#18144#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -594,16 +613,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="452" column="37" selection-start="16573" selection-end="16573" vertical-scroll-proportion="1.9983137">
+        <state line="443" column="30" selection-start="15219" selection-end="15219" vertical-scroll-proportion="-0.043252595">
           <folding>
-            <element signature="e#11360#11712#0" expanded="true" />
-            <element signature="e#11748#11995#0" expanded="true" />
-            <element signature="e#12045#13080#0" expanded="true" />
-            <element signature="e#12045#12351#1" expanded="false" />
-            <marker date="1360596450988" expanded="true" signature="14070:14653" placeholder="..." />
-            <marker date="1360596450988" expanded="true" signature="14073:14653" placeholder="..." />
-            <element signature="e#17408#17452#0" expanded="true" />
-            <element signature="e#17488#17524#0" expanded="true" />
+            <element signature="e#15#27#0" expanded="true" />
+            <element signature="e#3800#4642#0" expanded="true" />
+            <element signature="e#5600#9653#0" expanded="true" />
+            <element signature="e#9682#11345#0" expanded="true" />
+            <element signature="e#11397#11749#0" expanded="true" />
+            <element signature="e#11785#12032#0" expanded="true" />
+            <element signature="e#12082#13117#0" expanded="true" />
+            <element signature="e#12082#12388#1" expanded="false" />
+            <element signature="e#18028#18072#0" expanded="true" />
+            <element signature="e#18108#18144#0" expanded="true" />
           </folding>
         </state>
       </provider>

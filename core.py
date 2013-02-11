@@ -7,6 +7,7 @@ from wx import PyDeadObjectError
 from itertools import chain
 from collections import Counter
 from math import *
+from time import localtime, strftime
 #TODO:check imports
 
 def whitePixelGenerator(matrix):
@@ -386,7 +387,12 @@ def combinatorial(pixels, step=(2, 1), window=None):
     #Для R
     #R ограничено размерами входного изображения
     R_max = hypot(YX[0],YX[1])
-    R_ = list(xrange(0, int(ceil(R_max)), step[0]))  # Границы сетки по R
+    #Границы сетки по R
+    R_ = []
+    i = 0
+    while i <= ceil(R_max):
+        R_.append(i)
+        i += step[0]
     if not R_[-1] == R_max:  # Если R_max не кратно step[0]
         R_.append(R_max)
     #Центральные значения в ячейках
@@ -394,14 +400,18 @@ def combinatorial(pixels, step=(2, 1), window=None):
 
     #Для Theta
     #Theta в пределах [0, 2*pi]
-    Theta_ = list(xrange(0, 361, step[1]))  # Границы сетки по Theta
+    Theta_ = []  # Границы сетки по R
+    i = 0
+    while i <= 360:
+        Theta_.append(i)
+        i += step[1]
     if not Theta_[-1] == 360:
         Theta_.append(360)
     #Центральные значения в ячейках
     Theta = [float(Theta_[i-1] + Theta_[i]) / 2 for i in xrange(1, len(Theta_))]
 
     #STEP 2
-    print 'step2'
+    aaaaaaaaa = """    print 'step2'
     accumulator = numpy.zeros((len(R), len(Theta)), dtype=numpy.int32)
     white_pixels = whitePixelNeGenerator(pixels)
     print white_pixels
@@ -416,53 +426,59 @@ def combinatorial(pixels, step=(2, 1), window=None):
 
     #TODO: delete next line
     #print accumulator
-    numpy.save('accumulator165', accumulator)
+    numpy.save('accumulator165', accumulator)"""
 
-#    accumulator = numpy.load('accumulator (10, 1).npy')
+    accumulator = numpy.load('accumulator165 - 3 05.npy')
 #    accumulator = numpy.load('accumulator165.npy')
     #STEP 3,4
+    was = None
     lines_img = numpy.zeros_like(pixels)
-    for i in xrange(10):
+    for i in xrange(1000):
         argmax_value = numpy.unravel_index(
             accumulator.argmax(),
             accumulator.shape
         )
-        #print argmax_value
-        line_img = numpy.zeros_like(pixels)
-        print 'line %s detection'%i
-        #noinspection PyTypeChecker
-        r1, r2, r3 = R_[argmax_value[0]], R[argmax_value[0]], R_[argmax_value[0] + step[0]]
-        #noinspection PyTypeChecker
-        theta1, theta2, theta3 = Theta_[argmax_value[1]], Theta[argmax_value[1]], Theta_[argmax_value[1] + step[1]]
-        for x in xrange(1, pixels.shape[1] - 1):
-            for y in xrange(1, pixels.shape[0] - 1):
-                for theta in (theta1, theta2, theta3):
-                    if r1 <= x*cos(radians(theta)) + y*sin(radians(theta)) <= r3:
-                        line_img[y, x] = 255
-        #print numpy.uint8(asdf)
-        max_value = accumulator.max()
-        print argmax_value, max_value, accumulator.std(), accumulator.mean()
-        #print argmax_value[0]*10 + 5, argmax_value[1]
-        Image.fromarray(numpy.uint8((line_img*20).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\line\%s.bmp' % i, 'BMP')
-        Image.fromarray(numpy.uint8((line_img*20+pixels).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\line_\%s.bmp' % i, 'BMP')
-        lines_img += line_img
-        Image.fromarray(numpy.uint8(lines_img.copy().clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\lines\%s.bmp' % i, 'BMP')
-        Image.fromarray(numpy.uint8((lines_img+pixels).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\lines_\%s.bmp' % i, 'BMP')
-        Image.fromarray(numpy.uint8((accumulator*15).copy().clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\acc\%s.bmp' % i, 'BMP')
+        if argmax_value == was:
+            pass
+        else:
+            was = argmax_value
+            #print argmax_value
+            line_img = numpy.zeros_like(pixels)
+            #print 'line %s detection'%i
+            #noinspection PyTypeChecker
+            r1, r2, r3 = R_[argmax_value[0]], R[argmax_value[0]], R_[argmax_value[0] + 1]
+            #noinspection PyTypeChecker
+            theta1, theta2, theta3 = Theta_[argmax_value[1]], Theta[argmax_value[1]], Theta_[argmax_value[1] + 1]
+            for x in xrange(1, pixels.shape[1] - 1):
+                for y in xrange(1, pixels.shape[0] - 1):
+                    for theta in (theta1, theta2, theta3):
+                        if r1 <= x*cos(radians(theta)) + y*sin(radians(theta)) <= r3:
+                            line_img[y, x] = 255
+            #print numpy.uint8(asdf)
+            max_value = accumulator.max()
+            print '#%s.\t'%i + ('%s' % str(argmax_value)).ljust(12) + ('%s' % str(max_value)).ljust(4) + '%s %s' % (accumulator.std(), accumulator.mean()) + '\t%s' % strftime("%H:%M:%S", localtime())
+            #print '#%s.\tmax_cell%s\t%s\t%s\t%s'%(i, argmax_value, max_value, accumulator.std(), accumulator.mean())
+            #print argmax_value[0]*10 + 5, argmax_value[1]
+            Image.fromarray(numpy.uint8((line_img).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\line\%s.bmp' % i, 'BMP')
+            Image.fromarray(numpy.uint8((line_img+pixels).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\line_\%s.bmp' % i, 'BMP')
+            lines_img += line_img
+            Image.fromarray(numpy.uint8(lines_img.copy().clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\lines\%s.bmp' % i, 'BMP')
+            Image.fromarray(numpy.uint8((lines_img+pixels).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\lines_\%s.bmp' % i, 'BMP')
+            Image.fromarray(numpy.uint8((accumulator*15).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\acc\%s.bmp' % i, 'BMP')
 
-        line_pixels = set(whitePixelNeGenerator(line_img))#set(whitePixelNeGenerator(pixels)) & set(whitePixelNeGenerator(line_img))
-        #qwer = whitePixelNeGenerator(asdf)
-        line_pixels_len = len(line_pixels)
-        accumulator_ = numpy.zeros((len(R), len(Theta)), dtype=numpy.int32)
-        for index, pixel in enumerate(line_pixels):
-            if index%100==0:
-                print 'line %s deleting'%i, index, line_pixels_len
-            for r_theta in XYtoRThetaIndexes(pixel, R_, Theta_, step):
-                accumulator_[r_theta[0], r_theta[1]] += 1
-        #print 'aaaaaaa',accumulator.shape,accumulator_.shape
-        accumulator -= accumulator_
-        accumulator.clip(0)
-        Image.fromarray(numpy.uint8(accumulator.copy().clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\acc_\%s.bmp' % i, 'BMP')
+            line_pixels = set(whitePixelNeGenerator(line_img))#set(whitePixelNeGenerator(pixels)) & set(whitePixelNeGenerator(line_img))
+            #qwer = whitePixelNeGenerator(asdf)
+            line_pixels_len = len(line_pixels)
+            accumulator_ = numpy.zeros((len(R), len(Theta)), dtype=numpy.int32)
+            for index, pixel in enumerate(line_pixels):
+                #if index%100==0:
+                    #print 'line %s deleting'%i, index, line_pixels_len
+                for r_theta in XYtoRThetaIndexes(pixel, R_, Theta_, step):
+                    accumulator_[r_theta[0], r_theta[1]] += 1
+            #print 'aaaaaaa',accumulator.shape,accumulator_.shape
+            accumulator -= accumulator_
+            accumulator = accumulator.clip(0)
+            Image.fromarray(numpy.uint8(accumulator.clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\acc_\%s.bmp' % i, 'BMP')
 
 
 def hierarchical(pixels, window):
@@ -478,4 +494,4 @@ if __name__ == '__main__':
     img = Image.open(u'6.bmp')
     print img
     pixels = numpy.asarray(img.convert('L'), dtype=numpy.uint8)#.convert('L'))
-    combinatorial(pixels, (2,1))
+    combinatorial(pixels, (3,0.5))
