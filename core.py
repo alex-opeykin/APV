@@ -341,6 +341,35 @@ def find_R(pixel, theta, R_):
             if R_[i] < r <= R_[i+1]:
                 return i
 
+
+def point_near_line(x, y, r, theta, step):
+    """
+    Проверяет лежит ли точка в допустимом диапазоне r, theta.
+
+    Args:
+        x: Координата проверяемой точки.
+        y: Координата проверяемой точки.
+        r: Параметр центральной точки аккамулятора
+        theta: Параметр центральной точки аккамулятора
+        step: Размер аккамулятора
+    """
+    #Находим параметры некоторой прямой (2), проходящей через рассматриваемую точку
+    R = hypot(x,y)
+    Theta = degrees(asin(float(y)/R))
+
+    #Находим координаты точки пересечения прямой (2) и прямой переданной в функцию (r, theta)
+    x_ = (sin(radians(theta))*R - sin(radians(Theta))*r) / \
+         (sin(radians(theta))*cos(radians(Theta)) - sin(radians(Theta))*cos(radians(theta)))
+    y_ = - x_/(tan(radians(theta))) + R/sin(radians(theta))
+
+    #Проверяем лежит ли пересечение рядом с рассматриваемой точкой
+    R_ = hypot(x_, y_)
+    Theta_ = degrees(asin(float(y_)/R_))
+    near_r =  abs(R_ - R) <= step[0]#0.5 * step[0]
+    near_theta = abs(Theta_ - Theta) <= step[1]#0.5 * step[1]
+
+    return near_r and near_theta
+
 def combinatorial(pixels, step=(2, 1), window=None):
     """
     Combinatorial Hough transform.
@@ -387,9 +416,10 @@ def combinatorial(pixels, step=(2, 1), window=None):
 
     #TODO: delete next line
     #print accumulator
-    #numpy.save('accumulator (10, 1)', accumulator)
+    numpy.save('accumulator165', accumulator)
 
-    #accumulator = numpy.load('accumulator (10, 1).npy')
+#    accumulator = numpy.load('accumulator (10, 1).npy')
+#    accumulator = numpy.load('accumulator165.npy')
     #STEP 3,4
     lines_img = numpy.zeros_like(pixels)
     for i in xrange(10):
@@ -400,12 +430,15 @@ def combinatorial(pixels, step=(2, 1), window=None):
         #print argmax_value
         line_img = numpy.zeros_like(pixels)
         print 'line %s detection'%i
-        r, theta = R[argmax_value[0]], Theta[argmax_value[1]]
-        for x in xrange(pixels.shape[1]):
-            for y in xrange(pixels.shape[0]):
-                #TODO: условие хуйня
-                if условие:
-                    line_img[y, x] = 255
+        #noinspection PyTypeChecker
+        r1, r2, r3 = R_[argmax_value[0]], R[argmax_value[0]], R_[argmax_value[0] + step[0]]
+        #noinspection PyTypeChecker
+        theta1, theta2, theta3 = Theta_[argmax_value[1]], Theta[argmax_value[1]], Theta_[argmax_value[1] + step[1]]
+        for x in xrange(1, pixels.shape[1] - 1):
+            for y in xrange(1, pixels.shape[0] - 1):
+                for theta in (theta1, theta2, theta3):
+                    if r1 <= x*cos(radians(theta)) + y*sin(radians(theta)) <= r3:
+                        line_img[y, x] = 255
         #print numpy.uint8(asdf)
         max_value = accumulator.max()
         print argmax_value, max_value, accumulator.std(), accumulator.mean()
@@ -417,7 +450,7 @@ def combinatorial(pixels, step=(2, 1), window=None):
         Image.fromarray(numpy.uint8((lines_img+pixels).clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\lines_\%s.bmp' % i, 'BMP')
         Image.fromarray(numpy.uint8((accumulator*15).copy().clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\acc\%s.bmp' % i, 'BMP')
 
-        line_pixels = set(whitePixelNeGenerator(pixels)) & set(whitePixelNeGenerator(line_img))
+        line_pixels = set(whitePixelNeGenerator(line_img))#set(whitePixelNeGenerator(pixels)) & set(whitePixelNeGenerator(line_img))
         #qwer = whitePixelNeGenerator(asdf)
         line_pixels_len = len(line_pixels)
         accumulator_ = numpy.zeros((len(R), len(Theta)), dtype=numpy.int32)
@@ -426,6 +459,7 @@ def combinatorial(pixels, step=(2, 1), window=None):
                 print 'line %s deleting'%i, index, line_pixels_len
             for r_theta in XYtoRThetaIndexes(pixel, R_, Theta_, step):
                 accumulator_[r_theta[0], r_theta[1]] += 1
+        #print 'aaaaaaa',accumulator.shape,accumulator_.shape
         accumulator -= accumulator_
         accumulator.clip(0)
         Image.fromarray(numpy.uint8(accumulator.copy().clip(0,255))).save(r'C:\Users\User10100101\Desktop\1\acc_\%s.bmp' % i, 'BMP')
@@ -441,7 +475,7 @@ def adaptive(pixels, window):
 
 
 if __name__ == '__main__':
-    img = Image.open(u'1234.bmp')
+    img = Image.open(u'6.bmp')
     print img
     pixels = numpy.asarray(img.convert('L'), dtype=numpy.uint8)#.convert('L'))
     combinatorial(pixels, (2,1))
